@@ -1,3 +1,6 @@
+# ini files hold client id and client secret
+*.ini
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
