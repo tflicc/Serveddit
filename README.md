@@ -6,7 +6,6 @@ This sever manages requesting and refreshing a client's `access_token` using sec
 
 # ⚙️ &nbsp; The Process
 
-<hr>
 When the client (i.e. Snoop) sends a user to their browser to authorize the requested scopes, it also sends a POST request to `/client/new`. The POST contains a `UUID` that Reddit requires to verify the authentication request; Serveddit uses the `UUID` to create and manage `Client` SQLAlchemy models.
 
 When the user chooses to approve/deny scope access, Reddit will redirect to `/new/user`. The redirect contains the required information to create a new `User` instance; specifically, `clientUUID` and `refresh_token`.
@@ -15,12 +14,12 @@ After a user has logged in to the app, if / when a client tries to use an expire
 
 # 💩&nbsp; Endpoints
 
-<hr>
 ## Create
+
 - `POST /new/client/{UUID}` - create a new `Client` instance in the database
 - `POST /new/user` - create a new `User` instance in the database.
-	- ⚠️ &nbsp; Clients should <b >not</b> try to use this endpoint: Reddit sends a redirect here containing the necessary info
-	- ⚠️ &nbsp; Clients must exist before a new user can be created
+  - ⚠️ &nbsp; Clients should <b >not</b> try to use this endpoint: Reddit sends a redirect here containing the necessary info
+  - ⚠️ &nbsp; Clients must exist before a new user can be created
 
 ## Read
 
